@@ -1,10 +1,17 @@
 from django.db import models
 
 
+class MySyllabus(models.Model):
+        assignmentWeight = models.CharField(max_length=20)
+        gradeScale = models.CharField(max_length=20)
+
+
 class MyUser(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     type = models.CharField(max_length=1)
+    syllabus = models.ForeignKey(MySyllabus, on_delete=models.CASCADE)
+
 
 
 class MySyllabus(models.Model):
