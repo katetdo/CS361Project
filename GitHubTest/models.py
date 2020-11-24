@@ -6,6 +6,7 @@ class MyUser(models.Model):
     password = models.CharField(max_length=20)
     type = models.CharField(max_length=1)
 
+
 class PersonalInfo(models.Model):
     lastName = models.CharField(max_length=20)
     firstName = models.CharField(max_length=20)
@@ -14,8 +15,6 @@ class PersonalInfo(models.Model):
     email = models.CharField(max_length=20)
     phoneNumber = models.CharField(max_length=20)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-
-
 
     def __str__(self):
         return self.name
