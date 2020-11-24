@@ -7,7 +7,12 @@ class MyUser(models.Model):
     type = models.CharField(max_length=1)
 
 class PersonalInfo(models.Model):
-    name = models.CharField(max_length=20)
+    lastName = models.CharField(max_length=20)
+    firstName = models.CharField(max_length=20)
+    officeHours = models.CharField(max_length=20)
+    officeNumber = models.CharField(max_length=20)
+    email = models.CharField(max_length=20)
+    phoneNumber = models.CharField(max_length=20)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
 
     def __str__(self):
