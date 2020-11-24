@@ -6,7 +6,6 @@ class MyUser(models.Model):
     password = models.CharField(max_length=20)
     type = models.CharField(max_length=1)
 
-
 class PersonalInfo(models.Model):
     name = models.CharField(max_length=20)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
