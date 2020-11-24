@@ -18,6 +18,7 @@ class TA(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
 
 
+
 class Instructor(models.Model):
     personInfo = models.ForeignKey(PersonalInfo, on_delete=models.CASCADE)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
