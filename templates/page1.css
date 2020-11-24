@@ -1,0 +1,76 @@
+body{
+  background: mediumpurple;
+}
+
+h2{
+  margin-left:40px;
+}
+
+#label1{
+  margin-left:40px;
+}
+#label2{
+  margin-left:80px;
+}
+#label3{
+  margin-left:110px;
+}
+
+#AM{
+  margin-left:73px;
+}
+#PM{
+  margin-left:35px;
+}
+#room{
+  margin-left:50px;
+}
+#virtual{
+  margin-left:98px;
+}
+#all{
+  width:80%;
+  margin-left:40px;
+  margin-right: auto;
+}
+#officeh2{
+  margin-left:0px;
+}
+#officeHours{
+  float:left;
+}
+#Time{
+  float:left;
+  margin-left: 80px;
+}
+#mondayCheckbox{
+  margin-bottom:13px;
+}
+#tuesdayCheckbox{
+  margin-bottom:13px;
+}
+#wednesdayCheckbox{
+  margin-bottom:13px;
+}
+#thursdayCheckbox{
+  margin-bottom:13px;
+}
+#fridayCheckbox{
+  margin-bottom:13px;
+}
+#Instructor{
+  margin-left:40px;
+}
+#TA{
+  margin-left:35px;
+}
+
+#courseDropdown{
+  margin-left:50px;
+}
+#cancelButton{
+  margin-left:1380px;
+}
+#saveButton{
+  margin-left:10px;
+}

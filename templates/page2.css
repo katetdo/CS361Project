@@ -1,0 +1,78 @@
+body{
+  background: mediumpurple;
+}
+
+#label1{
+  margin-left:460px;
+}
+#label2{
+  margin-left:80px;
+}
+#label3{
+  margin-left:210px;
+}
+#label4{
+  margin-left:80px;
+}
+#label5{
+  margin-left:80px;
+}
+#label6{
+  margin-left:80px;
+}
+
+h2{
+  text-align:center;
+}
+h4{
+  display:inline;
+  margin-left:40px;
+  margin-right:300px;
+}
+
+#text1{
+  margin-left:70px;
+}
+#text2{
+  margin-left:60px;
+}
+#text3{
+  margin-left:60px;
+}
+
+#l{
+  margin-left:75px;
+}
+#a{
+  margin-left:108px;
+}
+#q{
+  margin-left:55px;
+}
+
+#label7{
+  margin-left:460px;
+}
+#label8{
+  margin-left:80px;
+}
+#week9{
+  margin-left:8px;
+}
+
+#dropdown{
+  margin-left:400px
+}
+#addComponents{
+  margin-left:80px;
+}
+#createComponent{
+  margin-left:80px;
+}
+
+#cancelButton{
+  margin-left:1380px;
+}
+#saveButton{
+  margin-left:10px;
+}

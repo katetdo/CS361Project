@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UI Page 1</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Dakito Dasho">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="page1.css" />
+  </head>
+  <body>
+    <header>
+        <h1 align="center">Course Staff Form</h1>
+    </header>
+    <hr>
+      <section>
+        <form id="name" method="post" action="">
+            <fieldset>
+              <h2>Personal Information</h2>
+              <label for="name" id="label1"> First Name:</label>
+                    <input type="text" name="name" id="first_name"  required autofocus>
+              <label for="name" id="label2"> Last Name:</label>
+                    <input type="text" name="name" id="last_name"  required autofocus><br><br>
+            </fieldset><br>
+            <fieldset>
+              <h2>Contact Information</h2>
+              <label for="email" id="label1">Email:</label>
+                    <input type="email" multiple name="email" id="email" required maxlength="30">
+              <label for="phone" id="label3">Phone #:</label>
+                    <input type="number" multiple name="number" id="phoneNumber" required maxlength="30"><br><br>
+            </fieldset><br>
+            <fieldset>
+              <div id="all">
+                <h2 id="officeh2">Office Hours</h2>
+                <div id="officeHours">
+
+                  <label for="age"></label>
+                          <input type="checkbox" name="major" value="mondayCheckbox" id="mondayCheckbox" checked><label for="ageyes">M</label><br>
+                          <input type="checkbox" name="major" value="tuesdayCheckbox" id="tuesdayCheckbox"><label for="ageno">T</label><br>
+                          <input type="checkbox" name="major" value="wednesdayCheckbox" id="wednesdayCheckbox" checked><label for="ageyes">W</label><br>
+                          <input type="checkbox" name="major" value="thursdayCheckbox" id="thursdayCheckbox"><label for="ageno">TR</label><br>
+                          <input type="checkbox" name="major" value="fridayCheckbox" id="fridayCheckbox" checked><label for="ageyes">F</label><br><br>
+                </div>
+                <div id="Time">
+                  <label for="name"> Start Time:</label>
+                        <input type="text" name="name" id="startTime"  required autofocus>
+                  <label for="name" id="room"> Room #:</label>
+                        <input type="number" multiple name="room" required maxlength="30"><br>
+                  <label for="AM/PM"></label><br>
+                        <input type="radio" name="AM/PM" value="ageyes" id="AM" checked><label for="ageyes">AM</label>
+                        <input type="radio" name="AM/PM" value="ageno" id="PM"><label for="ageno">PM</label>
+                  <label for="name" id="virtual"> Virtual:</label>
+                        <input type="text" name="name" required autofocus><br><br>
+
+                  <label for="name"> End Time:</label>
+                        <input type="text" name="name" id="endTime"  required autofocus>
+                  <label for="AM/PM"></label><br><br>
+                        <input type="radio" name="AM/PM" value="ageyes" id="AM" checked><label for="ageyes">AM</label>
+                        <input type="radio" name="AM/PM" value="ageno" id="PM"><label for="ageno">PM</label>
+                </div>
+              </div>
+            </fieldset><br>
+            <fieldset>
+              <h2>Role</h2>
+              <label for="choseRole"></label>
+                    <input type="radio" name="chooseRole" value="ageyes" id="Instructor" checked><label for="ageyes">Instructor</label>
+                    <input type="radio" name="chooseRole" value="ageno" id="TA"><label for="ageno">TA</label>
+              <label for="year" id="courseDropdown">School Standing:</label>
+                    <select name="courseDropdown">
+                      <option value="selectDropdown">Select One Below</option>
+                      <option value="CS_361">CS 361</option>
+                      <option value="EE 458">EE 458</option>
+                      <option value="CS 535">CS 535</option>
+                      <option value="CS 351">CS 351</option>
+                    </select>
+            </fieldset><br><br>
+            <button type="button" id="cancelButton">Cancel</button>
+            <button type="button" id="saveButton">Save</button><br><br>
+        </form>
+      </section>
+  </body>
+  <footer>
+    <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
+      Form made by Semicolons</div>
+  </footer>
+
+</html>
