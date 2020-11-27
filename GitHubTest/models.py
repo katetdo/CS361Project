@@ -19,7 +19,7 @@ class PersonalInfo(models.Model):
     email = models.CharField(max_length=20)
     phoneNumber = models.CharField(max_length=20)
     syllabus = models.ForeignKey(MySyllabus, on_delete=models.CASCADE)
-    user = models.ForeignKey(PersonalInfo, on_delete=models.CASCADE)
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
