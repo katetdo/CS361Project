@@ -23,4 +23,5 @@ urlpatterns = [
     path('Instructor/', InstructorView.as_view()),
     path('Admin/', AdminView.as_view()),
     path('', Login.as_view())
+    ]
 
