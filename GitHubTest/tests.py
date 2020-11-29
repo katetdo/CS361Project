@@ -16,18 +16,18 @@ class StuffStrTest(TestCase):
 
     def test_Session(self):
         client = Client()
-        response = client.get('/things/')
+        response = client.get('/TA/')
         self.assertEqual(response.status_code, 200)
 
     def test_something(self):
         session = self.client.session
         session['name'] = 'noman'
         session.save()
-        response = self.client.get('/things/')
-        self.assertEqual(list(response.context["things"]), list(map(str, list(Stuff.objects.filter(user=self.testuser1)))))
+        response = self.client.get('/TA/')
+        self.assertEqual(list(response.context["TA"]), list(map(str, list(MyUser.objects.filter(user=self.testuser1)))))
 
     def test_post(self):
         client = Client()
-        response = client.post('/', {"name": "noman","passward" : 1234})
+        response = client.post('/', {"name": "noman","passward" : 1234,"type":"t"})
         self.assertTrue((self.clint.login() == False))
         self.assertEqual(response.status_code, 200)
