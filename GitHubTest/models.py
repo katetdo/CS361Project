@@ -5,11 +5,11 @@ class MySyllabus(models.Model):
     assignmentWeight = models.CharField(max_length=20)
     gradeScale = models.CharField(max_length=20)
 
+
 class MyUser(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
-    type = models.CharField(max_length=1)
-    
+    type = models.CharField(max_length=1)  # T=TA  I=Instructor  A=Admin
 
 
 class PersonalInfo(models.Model):
@@ -19,10 +19,8 @@ class PersonalInfo(models.Model):
     officeNumber = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
     phoneNumber = models.CharField(max_length=20)
-    syllabus = models.ForeignKey(MySyllabus, on_delete=models.CASCADE)
+    syllabus = models.ForeignKey(MySyllabus, on_delete=models.CASCADE)  # permissions access for T vs I
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
-
-
