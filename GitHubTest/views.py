@@ -12,10 +12,11 @@ class Home(View):
 
     def post(self, request):
         try:
-            myUser = MyUser.objects.get(name=request.POST['name'], password=request.POST['password'],
-                                        type=request.POST['type'])
-            request.session["current"] = myUser.id
-            # to do...put where to redirect
+            my_user = MyUser.objects.get(name=request.POST['name'], password=request.POST['password'])
+            request.session["current"] = my_user.id
+            user_type = my_user.type
+            if user_type == 'A':
+                return redirect("admin/")
             return redirect("/")
         except ObjectDoesNotExist:
             return render(request, "home.html", {})
