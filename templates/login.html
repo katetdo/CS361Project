@@ -1,23 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <title>Login page</title>
     <meta charset="utf-8">
     <meta name="author" content="Dakito Dasho">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="{% static "styles/login.css" %}" />
   </head>
   <body>
     <div id="maindiv">
-      <img src="uwm_logo.png" alt="UWM" title="uwm_logo">
+      <img src="{% static "images/uwm_logo.png" %}" alt="UWM" title="uwm_logo">
       <h1>Login</h1>
-      <p id="usernameP">Username:</p>
-      <label for="name" id="label1"></label>
-            <input type="text" name="name" id="username"  required autofocus><br>
-      <p id="passwordP">Password:</p>
-      <label for="name" id="label2"></label>
-            <input type="text" name="name" id="password"  required autofocus><br><br>
-      <button type="button" id="loginButton">login</button>
+        <form method="post" action="/">
+            {% csrf_token %}
+            <p id="usernameP">Username:</p>
+            <label for="name" id="label1"></label>
+            <input type="text" name="username" id="username"  required autofocus><br>
+            <p id="passwordP">Password:</p>
+            <label for="name" id="label2"></label>
+            <input type="password" name="password" id="password"  required autofocus><br><br>
+            <a href="syllabus.html"  id ="syllabus_link">View Syllabus</a>
+            <input type="submit" id="loginButton" value="Login">
+        </form>
     </div>
   </body>
 </html>

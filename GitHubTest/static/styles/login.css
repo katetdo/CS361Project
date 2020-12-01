@@ -70,6 +70,10 @@ h1{
 
 #loginButton{
   width:70px;
-  margin-left:287px;
+  margin-left:36px;
   background:white;
+}
+
+#syllabus_link{
+  margin-left:155px;
 }
