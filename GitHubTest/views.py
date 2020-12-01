@@ -70,8 +70,12 @@ class InstructorView(View):
 #             return render(request,"admin.html",{})
       
 class Login(View):
+    # def get(self, request):
+    #     return render(request, "", {"error_msg": ""})  # TODO add template
     def get(self, request):
-        return render(request, "", {"error_msg": ""})  # TODO add template
+        request.session["current"] = ""
+        return render(request, "login.html.html", {})
+
 
     def post(self, request):
         is_valid = False
