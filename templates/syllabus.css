@@ -1,0 +1,12 @@
+body{
+  background: mediumpurple;
+}
+#createButton{
+  position: absolute;
+  right:    40px;
+  bottom:   150px;
+  width:120px;
+  height:30px;
+  background: #FF0800;
+  font-weight: bold;
+}
