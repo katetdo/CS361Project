@@ -8,18 +8,18 @@ class Home(View):
     # Todo....
     def get(self, request):
         request.session["current"] = ""
-        return render(request, "home.html", {})
+        return render(request, "login.html", {})
 
     def post(self, request):
         try:
-            my_user = MyUser.objects.get(name=request.POST['name'], password=request.POST['password'])
+            my_user = MyUser.objects.get(username=request.POST['username'], password=request.POST['password'])
             request.session["current"] = my_user.id
             user_type = my_user.type
             if user_type == 'A':
-                return redirect("admin/")
+                return redirect("/administrator/")
             return redirect("/")
         except ObjectDoesNotExist:
-            return render(request, "home.html", {})
+            return render(request, "login.html", {})
 
 
 class TAView(View):
@@ -47,46 +47,25 @@ class InstructorView(View):
     def get(self, request):
         request.session["current"] = ""
         return render(request, "TA_UI_page1.html.html", {})
-   
+
     def post(self, request):
         return render(request, "TA_UI_page1.html.html", {})
 
 
-# class AdminView(View):
-#     # Todo....
-#     def get(self,request):
-#
-#         return render(request,"admin.html",{})
-#
-#     # Todo....
-#     def post(self,request):
-#         try:
-#             myAdmin = Admins.objects.get(name=request.POST['name'], password=request.POST['password'])
-#             request.session["current"] = myAdmin.id
-#             # to do...put where to redirect
-#             return redirect("/Admin")
-#         except Exception as e:
-#
-#
-#             return render(request,"admin.html",{})
-      
-class Login(View):
-    # def get(self, request):
-    #     return render(request, "", {"error_msg": ""})  # TODO add template
+class AdminView(View):
+    # Todo....
     def get(self, request):
-        request.session["current"] = ""
-        return render(request, "login.html.html", {})
+        return render(request, "admin.html", {})
 
 
-    def post(self, request):
-        is_valid = False
-        try:
-            m_user = MyUser.objects.get(username=request.POST["username"])
-            is_valid = (m_user.password == request.POST["password"])
-        except:
-            return render(request, "", {"error_msg": "User not found."})
-        if is_valid:
-            request.session["current"] = m_user.id
-            return redirect("")  # TODO redirect to correct page based on user type.
-        else:
-            return render(request, "", {"error_msg": ""})  # TODO add template
+'''   def post(self,request):
+       try:
+           myAdmin = Admins.objects.get(name=request.POST['name'], password=request.POST['password'])
+          request.session["current"] = myAdmin.id
+          # to do...put where to redirect
+           return redirect("/Admin")
+       except Exception as e:
+
+
+           return render(request,"admin.html",{})
+    '''
