@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import MySyllabus, MyUser, PersonalInfo, Admins
+from .models import MySyllabus, MyUser, PersonalInfo
 
 
 class Home(View):
@@ -51,23 +51,23 @@ class InstructorView(View):
         return render(request, "TA_UI_page1.html.html", {})
 
 
-class AdminView(View):
-    # Todo....
-    def get(self,request):
-
-        return render(request,"admin.html",{})
-
-    # Todo....
-    def post(self,request):
-        try:
-            myAdmin = Admins.objects.get(name=request.POST['name'], password=request.POST['password'])
-            request.session["current"] = myAdmin.id
-            # to do...put where to redirect
-            return redirect("/Admin")
-        except Exception as e:
-
-
-            return render(request,"admin.html",{})
+# class AdminView(View):
+#     # Todo....
+#     def get(self,request):
+#
+#         return render(request,"admin.html",{})
+#
+#     # Todo....
+#     def post(self,request):
+#         try:
+#             myAdmin = Admins.objects.get(name=request.POST['name'], password=request.POST['password'])
+#             request.session["current"] = myAdmin.id
+#             # to do...put where to redirect
+#             return redirect("/Admin")
+#         except Exception as e:
+#
+#
+#             return render(request,"admin.html",{})
       
 class Login(View):
     def get(self, request):
