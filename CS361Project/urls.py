@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home.as_view()),
     path('TA/', TAView.as_view()),
-    path('Instructor/', InstructorView.as_view()),
+    path('instructor/', InstructorView.as_view()),
     path('administrator/', AdminView.as_view())
     ]
 

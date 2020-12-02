@@ -12,6 +12,7 @@
     <div id="maindiv">
       <img src="{% static "images/uwm_logo.png" %}" alt="UWM" title="uwm_logo">
       <h1>Login</h1>
+        <p style="color: red; text-align: center;">{{ error_msg }}</p>
         <form method="post" action="/">
             {% csrf_token %}
             <p id="usernameP">Username:</p>
