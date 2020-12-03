@@ -17,7 +17,8 @@ class Home(View):
             user_type = my_user.type
             if user_type == 'A':
                 return redirect("/administrator/")
-            return redirect("/")
+            else:
+                return redirect("/")
         except ObjectDoesNotExist:
             return render(request, "login.html", {})
 
