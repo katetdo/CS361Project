@@ -5,21 +5,37 @@ from .models import MySyllabus, MyUser, PersonalInfo
 
 
 class Home(View):
-    # Todo....
     def get(self, request):
         request.session["current"] = ""
-        return render(request, "login.html", {})
+        return render(request, "login.html", {"error_msg": ""})
 
     def post(self, request):
+        url_dict = {"A": "/administrator/", "I": "/instructor/", "TA": "/TA/"}
         try:
             my_user = MyUser.objects.get(username=request.POST['username'], password=request.POST['password'])
             request.session["current"] = my_user.id
-            user_type = my_user.type
-            if user_type == 'A':
-                return redirect("/administrator/")
-            return redirect("/")
+            return redirect(url_dict[my_user.type])
         except ObjectDoesNotExist:
-            return render(request, "login.html", {})
+            return render(request, "login.html", {"error_msg": "Incorrect username or password."})
+
+
+class AdminView(View):
+    # Todo....
+    def get(self, request):
+        return render(request, "admin.html", {})
+
+
+'''   def post(self,request):
+       try:
+           myAdmin = Admins.objects.get(name=request.POST['name'], password=request.POST['password'])
+          request.session["current"] = myAdmin.id
+          # to do...put where to redirect
+           return redirect("/Admin")
+       except Exception as e:
+
+
+           return render(request,"admin.html",{})
+    '''
 
 
 class TAView(View):
@@ -52,20 +68,4 @@ class InstructorView(View):
         return render(request, "TA_UI_page1.html.html", {})
 
 
-class AdminView(View):
-    # Todo....
-    def get(self, request):
-        return render(request, "admin.html", {})
 
-
-'''   def post(self,request):
-       try:
-           myAdmin = Admins.objects.get(name=request.POST['name'], password=request.POST['password'])
-          request.session["current"] = myAdmin.id
-          # to do...put where to redirect
-           return redirect("/Admin")
-       except Exception as e:
-
-
-           return render(request,"admin.html",{})
-    '''
