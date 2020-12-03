@@ -14,7 +14,12 @@ class Home(View):
         try:
             my_user = MyUser.objects.get(username=request.POST['username'], password=request.POST['password'])
             request.session["current"] = my_user.id
-            return redirect(url_dict[my_user.type])
+          #  return redirect(url_dict[my_user.type])
+            user_type = my_user.type
+            if user_type == 'A':
+                return redirect("/administrator/")
+            else:
+                return redirect("/")
         except ObjectDoesNotExist:
             return render(request, "login.html", {"error_msg": "Incorrect username or password."})
 
