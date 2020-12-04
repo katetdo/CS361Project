@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import MySyllabus, MyUser, PersonalInfo
+from GitHubTest.models import MySyllabus, MyUser, PersonalInfo
 
 
 class Home(View):
@@ -10,7 +10,7 @@ class Home(View):
         return render(request, "login.html", {"error_msg": ""})
 
     def post(self, request):
-        url_dict = {"A": "/administrator/", "I": "/instructor/", "TA": "/TA/"}
+        url_dict = {"A": "/administrator/", "I": "/instructor/", "T": "/TA/"}
         try:
             my_user = MyUser.objects.get(username=request.POST['username'], password=request.POST['password'])
             request.session["current"] = my_user.id
@@ -23,6 +23,7 @@ class AdminView(View):
     # Todo....
     def get(self, request):
         return render(request, "admin.html", {})
+
 
 
 '''   def post(self,request):
