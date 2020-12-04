@@ -12,22 +12,24 @@
     <header>
         <h1 align="center">Course Staff Form</h1>
     </header>
+    <form method="post" action="/">
+        {% csrf_token %}
     <hr>
       <section>
         <form id="name" method="post" action="">
             <fieldset>
               <h2>Personal Information</h2>
               <label for="name" id="label1"> First Name:</label>
-                    <input type="text" name="name" id="first_name"  required autofocus>
+                    <input type="text" name="first_name" id="first_name"  required autofocus>
               <label for="name" id="label2"> Last Name:</label>
-                    <input type="text" name="name" id="last_name"  required autofocus><br><br>
+                    <input type="text" name="last_name" id="last_name"  required autofocus><br><br>
             </fieldset><br>
             <fieldset>
               <h2>Contact Information</h2>
               <label for="email" id="label1">Email:</label>
                     <input type="email" multiple name="email" id="email" required maxlength="30">
               <label for="phone" id="label3">Phone #:</label>
-                    <input type="number" multiple name="number" id="phoneNumber" required maxlength="30"><br><br>
+                    <input type="number" multiple name="phoneNumber" id="phoneNumber" required maxlength="30"><br><br>
             </fieldset><br>
             <fieldset>
               <div id="all">
@@ -35,43 +37,43 @@
                 <div id="officeHours">
 
                   <label for="age"></label>
-                          <input type="checkbox" name="major" value="mondayCheckbox" id="mondayCheckbox" checked><label for="ageyes">M</label><br>
-                          <input type="checkbox" name="major" value="tuesdayCheckbox" id="tuesdayCheckbox"><label for="ageno">T</label><br>
-                          <input type="checkbox" name="major" value="wednesdayCheckbox" id="wednesdayCheckbox" checked><label for="ageyes">W</label><br>
-                          <input type="checkbox" name="major" value="thursdayCheckbox" id="thursdayCheckbox"><label for="ageno">TR</label><br>
-                          <input type="checkbox" name="major" value="fridayCheckbox" id="fridayCheckbox" checked><label for="ageyes">F</label><br><br>
+                          <input type="checkbox" name="mondayCheckbox" value="mondayCheckbox" id="mondayCheckbox" checked><label for="checkbox">M</label><br>
+                          <input type="checkbox" name="tuesdayCheckbox" value="tuesdayCheckbox" id="tuesdayCheckbox"><label for="checkbox">T</label><br>
+                          <input type="checkbox" name="wednesdayCheckbox" value="wednesdayCheckbox" id="wednesdayCheckbox" checked><label for="checkbox">W</label><br>
+                          <input type="checkbox" name="thursdayCheckbox" value="thursdayCheckbox" id="thursdayCheckbox"><label for="checkbox">TR</label><br>
+                          <input type="checkbox" name="fridayCheckbox" value="fridayCheckbox" id="fridayCheckbox" checked><label for="checkbox">F</label><br><br>
                 </div>
                 <div id="Time">
                   <label for="name"> Start Time:</label>
-                        <input type="text" name="name" id="startTime"  required autofocus>
+                        <input type="text" name="startTime" id="startTime"  required autofocus>
                   <label for="name" id="room"> Room #:</label>
-                        <input type="number" multiple name="room" required maxlength="30"><br>
+                        <input type="number" multiple name="roomNumber" required maxlength="30"><br>
                   <label for="AM/PM"></label><br>
-                        <input type="radio" name="AM/PM1" value="ageyes" id="AM" checked><label for="ageyes">AM</label>
-                        <input type="radio" name="AM/PM1" value="ageno" id="PM"><label for="ageno">PM</label>
+                        <input type="radio" name="AM/PM1" value="AM/PM1" id="AM" checked><label for="AM/PM">AM</label>
+                        <input type="radio" name="AM/PM1" value="AM/PM1" id="PM"><label for="AM/PM">PM</label>
                   <label for="name" id="virtual"> Virtual:</label>
                         <input type="text" name="name" required autofocus><br><br>
 
                   <label for="name"> End Time:</label>
                         <input type="text" name="name" id="endTime"  required autofocus>
                   <label for="AM/PM"></label><br><br>
-                        <input type="radio" name="AM/PM2" value="ageyes" id="AM" checked><label for="ageyes">AM</label>
-                        <input type="radio" name="AM/PM2" value="ageno" id="PM"><label for="ageno">PM</label>
+                        <input type="radio" name="AM/PM2" value="AM/PM2" id="AM" checked><label for="AM/PM">AM</label>
+                        <input type="radio" name="AM/PM2" value="AM/PM2" id="PM"><label for="AM/PM">PM</label>
                 </div>
               </div>
             </fieldset><br>
             <fieldset>
               <h2>Role</h2>
               <label for="choseRole"></label>
-                    <input type="radio" name="chooseRole" value="ageyes" id="Instructor" checked><label for="ageyes">Instructor</label>
-                    <input type="radio" name="chooseRole" value="ageno" id="TA"><label for="ageno">TA</label>
+                    <input type="radio" name="chooseInstructor" value="chooseInstructor" id="Instructor" checked><label for="chooseRole">Instructor</label>
+                    <input type="radio" name="chooseTA" value="chooseTA" id="TA"><label for="chooseRole">TA</label>
               <label for="year" id="courseDropdown">School Standing:</label>
                     <select name="courseDropdown">
                       <option value="selectDropdown">Select One Below</option>
-                      <option value="CS_361">CS 361</option>
-                      <option value="EE 458">EE 458</option>
-                      <option value="CS 535">CS 535</option>
-                      <option value="CS 351">CS 351</option>
+                      <option value="class1">CS 361</option>
+                      <option value="class2">EE 458</option>
+                      <option value="class3">CS 535</option>
+                      <option value="class4">CS 351</option>
                     </select>
             </fieldset><br><br>
             <button type="button" id="cancelButton">Cancel</button>
