@@ -35,8 +35,8 @@ class AdminView(View):
         return render(request, "admin.html", {"user_info": user_info, "name": name, "syllabi": syllabi})
 
     def post(self, request):
-        current_user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
-        name = current_user.firstName + " " + current_user.lastName
+        #current_user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
+        #name = current_user.firstName + " " + current_user.lastName
         # create new user
         new_user = MyUser(username=request.POST["username"], password=request.POST["password"], type=request.POST["type"])
         new_user.save()
@@ -48,7 +48,7 @@ class AdminView(View):
         new_info.save()
         user_info = list(PersonalInfo.objects.all().values())
         syllabi = list(MySyllabus.objects.all().values())
-        return render(request, "admin.html", {"user_info": user_info, "name": name, "syllabi": syllabi})
+        return render(request, "admin.html", {"user_info": user_info, "syllabi": syllabi})
 
 
 class PersonalInfoView(View):
