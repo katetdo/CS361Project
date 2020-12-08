@@ -87,24 +87,8 @@ class TAView(View):
 class InstructorView(View):
     # Todo....
     def get(self, request):
-
-        #request.session["current"] = ""
         user = request.session.get("current", False)
-
         userInfo = list(PersonalInfo.objects.filter(user=user))
-
-        dateLists = []
-        # for i in userInfo:
-        #     newDate = {}
-        #     newDate["lastName"] = i["lastName"]
-        #     newDate["firstName"] = i["firstName"]
-        #     newDate["officeHours"] = i["officeHours"]
-        #     newDate["officeNumber"] = i["officeNumber"]
-        #     newDate["email"] = i["email"]
-        #     newDate["phoneNumber"] = i["phoneNumber"]
-        #
-        #     newDate["user"] = str(MySyllabus.objects.get(id=i["user_id"]))
-        #     dateLists.append(newDate)
 
         return render(request, "admin.html", {"details": userInfo})
 
