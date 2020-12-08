@@ -90,8 +90,8 @@ class InstructorView(View):
 
         #request.session["current"] = ""
         user = request.session.get("current", False)
-        userInfo = map(str, list(PersonalInfo.objects.filter(user=user)))  # has personal info of the ins
-        rawdate = list(MyUser.objects.all().values())
+
+        userInfo = list(PersonalInfo.objects.filter(user=user))
 
         dateLists = []
         # for i in userInfo:
