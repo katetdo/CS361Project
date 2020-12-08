@@ -27,11 +27,28 @@ class Home(View):
 
 
 class AdminView(View):
-    # Todo....
     def get(self, request):
-        return render(request, "admin.html", {})
+        current_user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
+        name = current_user.firstName + " " + current_user.lastName
+        user_info = list(PersonalInfo.objects.all().values())
+        syllabi = list(MySyllabus.objects.all().values())
+        return render(request, "admin.html", {"user_info": user_info, "name": name, "syllabi": syllabi})
+
     def post(self, request):
-        return redirect("/TA/")
+        current_user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
+        name = current_user.firstName + " " + current_user.lastName
+        # create new user
+        new_user = MyUser(username=request.POST["username"], password=request.POST["password"], type=request.POST["type"])
+        new_user.save()
+        new_info = PersonalInfo(lastName=request.POST["lastName"], firstName=request.POST["firstName"],
+                                officeHours="", officeNumber="",
+                                email="", phoneNumber="",
+                                syllabus=MySyllabus.objects.get(id=request.POST["syllabus"]),
+                                user=new_user)
+        new_info.save()
+        user_info = list(PersonalInfo.objects.all().values())
+        syllabi = list(MySyllabus.objects.all().values())
+        return render(request, "admin.html", {"user_info": user_info, "name": name, "syllabi": syllabi})
 
 
 '''   def post(self,request):

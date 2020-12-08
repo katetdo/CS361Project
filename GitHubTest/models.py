@@ -2,6 +2,7 @@ from django.db import models
 
 
 class MySyllabus(models.Model):
+    courseName = models.CharField(max_length=20, default="")
     assignmentWeight = models.CharField(max_length=20)
     gradeScale = models.CharField(max_length=20)
 
