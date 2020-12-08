@@ -53,9 +53,10 @@ class AdminView(View):
 
 class PersonalInfoView(View):
     def get(self, request):
-        user = request.session.get("current", False)
-        user_info = list(PersonalInfo.objects.filter(user=user))
-        return render(request, "TA_UI_page1.html", {"user_info": user_info})
+        # user = request.session.get("current", False)
+        current_user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
+        # user_info = list(PersonalInfo.objects.filter(user=user))
+        return render(request, "TA_UI_page1.html", {"user_info": current_user})
 
     def post(self, request):
         user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
@@ -70,5 +71,5 @@ class PersonalInfoView(View):
                                 user=user)
 
         new_info.save()
-        return render(request, "TA_UI_page1.html.html", {})
+        return render(request, "TA_UI_page1.html", {})
 
