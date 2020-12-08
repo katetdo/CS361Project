@@ -29,6 +29,16 @@
          {% endfor %}
      </table>
         <div>
+     <table>
+         <tr>
+         <th>{{ name }}</th>
+         </tr>
+         {% for x in details %}
+             <tr>
+                <td>{{ x.username }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 
      </div>
