@@ -16,31 +16,23 @@
       <tr align="center" style="background-color: Lavender; font-size:30px" height="40">
         <td style="width:15px">Course Name</td>
         <td style="width:1px">Instructor</td>
-        <td style="width:60px">TA</td>
-        <td style="width:25px">Course Subject</td>
-      </tr>
+         <td style="width:60px">TA</td>
+         <td style="width:25px">Course Subject</td>
+       </tr>
       {% for i in user_info %}
              <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
+                <td>{{ i.phoneNumber }}</td>
                  <td>{{ i.firstName }}</td>
                  <td>{{ i.lastName }}</td>
+                 <td>{{ i.email }}</td>
              </tr>
          {% endfor %}
-    </table>
-    <div>
-     <table>
-         <tr>
-              <th>{{ name }}</th>
-              </tr>
-            {% for x in details %}
-             <tr>
-                  <td>{{ x.username }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+     </table>
+        <div>
 
 
      </div>
-    <h1>Create user:</h1><br>
+         <h1>Create user:</h1><br>
       <form method="post" action="/administrator/">
           {% csrf_token %}
          <label for="firstName">First name: </label>
