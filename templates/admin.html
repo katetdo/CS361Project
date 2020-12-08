@@ -80,7 +80,25 @@
         <td></td>
       </tr>
     </table>
+
+
+
+    <div>
+    <table>
+        <tr>
+            <th>First Name</th>
+        </tr>
+        {% for x in details %}
+            <tr>
+                <td>{{ x.username }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    </div>
     <button type="button" id="createButton">Create</button>
+
   </body>
   <footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
