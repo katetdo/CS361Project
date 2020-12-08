@@ -74,8 +74,23 @@ class StuffStrTest(unittest.TestCase):
         self.assertFalse((self.client.login()))
         self.assertEqual(response.status_code, 200)
 
-    #def test_personalInfo(self):
+
+class TestPersonalInfo(unittest.TestCase):
+    def set_up_personal_info(self):
+        self.client = Client()
+        self.user = MyUser(name="Santha", password="1234", type="A")
+        self.user.save()
+
+    def test_max_length(self):
+        # overTwentyChars = "012345678901234567890"
+        self.user.lastName = "Do"
+        self.user.firstName = "Kate"
+        self.user.officeHours = "12:00 - 1:00"
+        self.user.officeNumber = "205"
+        self.user.email = "katetdo@uwm.edu"
+        self.user.phoneNumber = "262-716-5272"
 
 
-suite = unittest.TestSuite()
-suite.addTest(StuffStrTest())
+def suit():
+    suite = unittest.TestSuite()
+    suite.addTests(StuffStrTest(), TestPersonalInfo())
