@@ -12,13 +12,19 @@
     <header>
         <h1 align="center">Course Staff Form</h1>
     </header>
+     <h2>Personal Information</h2>
+        <p>First Name     :{{ user_info.firstName }}</p>
+        <p>Last Name      :{{ user_info.lastName }}</p>
+        <p>Office Hours   :{{ user_info.officeHours }}</p>
+        <p>Office Number  :{{ user_info.officeNumber}}</p>
+        <p>Email          :{{ user_info.email }}</p>
+        <p>Phone Number   :{{ user_info.phoneNumber}}</p>
+        <p>Course         :{{ user_info.syllabus.courseName }}</p>
+        <p>Syllabus       :{{ user_info.syllabus.assignmentWeight }}</p>
     <form method="post" action="/">
         {% csrf_token %}
     <hr>
       <section>
-          <h2>Personal Information</h2>
-              <p> First Name: {{ user_info.firstName }}</p>
-              <p> Last Name: {{ user_info.lastName }}</p>
         <form id="name" method="post" action="">
             <fieldset>
               <h2>Contact Information</h2>
