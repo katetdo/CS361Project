@@ -19,90 +19,55 @@
         <td style="width:60px">TA</td>
         <td style="width:25px">Course Subject</td>
       </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td id="cell1"></td>
-        <td id="cell2"></td>
-        <td id="cell3"></td>
-        <td id="cell4"></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+      {% for i in user_info %}
+             <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
+                 <td>{{ i.firstName }}</td>
+                 <td>{{ i.lastName }}</td>
+             </tr>
+         {% endfor %}
     </table>
-
-
-
     <div>
-    <table>
-        <tr>
-            <th>First Name</th>
-        </tr>
-        {% for x in details %}
-            <tr>
-                <td>{{ x.username }}</td>
+     <table>
+         <tr>
+              <th>{{ name }}</th>
+              </tr>
+            {% for x in details %}
+             <tr>
+                  <td>{{ x.username }}</td>
             </tr>
         {% endfor %}
     </table>
 
 
-    </div>
-    <button type="button" id="createButton">Create</button>
+     </div>
+    <h1>Create user:</h1><br>
+      <form method="post" action="/administrator/">
+          {% csrf_token %}
+         <label for="firstName">First name: </label>
+         <input type="text" name="firstName"><br>
+         <label for="lastName">Last name: </label>
+         <input type="text" name="lastName"><br>
+          <label for="username">Username: </label>
+          <input type="text" name="username" id="username"  required autofocus><br>
+          <label for="password">Password: </label>
+          <input type="password" name="password" id="password"  required autofocus><br><br>
+         <label for="type">User type: </label>
+          <select name="type">
+              <option value="I">Instructor</option>
+              <option value="TA">TA</option>
+          </select><br>
+         <label for="syllabus">Course: </label>
+          <select name="syllabus">
+              {% for i in syllabi %}
+                 <option value="{{ i.id }}">{{ i.courseName }}</option>
+              {% endfor %}
+          </select>
+          <input type="submit" id="loginButton" value="Create user">
+      </form>
 
-  </body>
-  <footer>
+   </body>
+   <footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
       Form made by Semicolons</div>
   </footer>
 </html>
-
