@@ -1,0 +1,13 @@
+/*
+Author: Connor Oaks
+Description: Global styles not specific to one page.
+ */
+
+div.horizontal_block {
+    width: 100%;
+    margin: 0 auto;
+}
+div.horizontal_content_wrapper {
+    width: 100%;
+    float: left;
+}

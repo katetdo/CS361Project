@@ -1,75 +1,106 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-  <head>
+<head>
     <title>Admin UI</title>
     <meta charset="utf-8">
     <meta name="author" content="Dakito Dasho">
-    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "styles/admin.css" %}" />
-  </head>
-  <body>
-    <table width="100%" height="250%" align="center" border="1">
-      <tr>
-        <th colspan="7" style="background-color: Lavender; font-size:30px" height="40" >Courses</th>
-      </tr>
-      <tr align="center" style="background-color: Lavender; font-size:30px" height="40">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "styles/admin.css" %}"/>
+    <linl rel="stylesheet" href="{% static "styles/global.css" %}"/>
+</head>
+<body>
+<table width="100%" height="250%" align="center" border="1">
+    <tr>
+        <th colspan="7" style="background-color: Lavender; font-size:30px" height="40">Courses</th>
+    </tr>
+    <tr align="center" style="background-color: Lavender; font-size:30px" height="40">
         <td style="width:15px">Course Name</td>
         <td style="width:1px">Instructor</td>
-         <td style="width:60px">TA</td>
-         <td style="width:25px">Course Subject</td>
-       </tr>
-      {% for i in user_info %}
-             <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-                <td>{{ i.phoneNumber }}</td>
-                 <td>{{ i.firstName }}</td>
-                 <td>{{ i.lastName }}</td>
-                 <td>{{ i.email }}</td>
-             </tr>
-         {% endfor %}
-     </table>
-        <div>
-     <table>
-         <tr>
-         <th>{{ name }}</th>
-         </tr>
-         {% for x in details %}
-             <tr>
-                <td>{{ x.username }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+        <td style="width:60px">TA</td>
+        <td style="width:25px">Course Subject</td>
+    </tr>
+    {% for i in user_info %}
+        <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
+            <td>{{ i.phoneNumber }}</td>
+            <td>{{ i.firstName }}</td>
+            <td>{{ i.lastName }}</td>
+            <td>{{ i.email }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<div>
 
 
-     </div>
-         <h1>Create user:</h1><br>
-      <form method="post" action="/administrator/">
-          {% csrf_token %}
-         <label for="firstName">First name: </label>
-         <input type="text" name="firstName"><br>
-         <label for="lastName">Last name: </label>
-         <input type="text" name="lastName"><br>
-          <label for="username">Username: </label>
-          <input type="text" name="username" id="username"  required autofocus><br>
-          <label for="password">Password: </label>
-          <input type="password" name="password" id="password"  required autofocus><br><br>
-         <label for="type">User type: </label>
-          <select name="type">
-              <option value="I">Instructor</option>
-              <option value="TA">TA</option>
-          </select><br>
-         <label for="syllabus">Course: </label>
-          <select name="syllabus">
-              {% for i in syllabi %}
-                 <option value="{{ i.id }}">{{ i.courseName }}</option>
-              {% endfor %}
-          </select>
-          <input type="submit" id="loginButton" value="Create user">
-      </form>
-
-   </body>
-   <footer>
+</div>
+<div class="horizontal_block">
+    <div class="horizontal_content_wrapper">
+        <h1>Create user:</h1><br>
+        <form method="post" action="/administrator/">
+            {% csrf_token %}
+            <label for="firstName">First name: </label>
+            <input type="text" name="firstName"><br>
+            <label for="lastName">Last name: </label>
+            <input type="text" name="lastName"><br>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" required autofocus><br>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required autofocus><br><br>
+            <label for="type">User type: </label>
+            <select name="type">
+                <option value="I">Instructor</option>
+                <option value="TA">TA</option>
+            </select><br>
+            <label for="syllabus">Course: </label>
+            <select name="syllabus">
+                {% for i in courses %}
+                    <option value="{{ i.id }}">{{ i.courseName }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="create_user" id="create_user_button" value="Create user">
+        </form>
+    </div>
+    <div class="horizontal_content_wrapper">
+        <h1>Add course: </h1><br>
+        <form method="post" action="/administrator/">
+            {% csrf_token %}
+            <label for="courseName">Course name: </label>
+            <input type="text" name="course_name" id="courseName">
+            <label for="instructor">Instructor: </label>
+            <select name="instructor" id="instructor">
+                {% for i in user_info %}
+                    <option value="{{ i.id }}">{{ i.lastName }}, {{ i.firstName }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="create_course" value="Create course">
+        </form>
+    </div>
+    <div class="horizontal_content_wrapper">
+        <h1>Add section: </h1><br>
+        <form method="post" action="/administrator/">
+            {% csrf_token %}
+            <label for="sectionNumber">Section number: </label>
+            <input type="number" name="section_number" id="sectionNumber">
+            <label for="course">Course: </label>
+            <select name="course" id="course">
+                {% for i in courses %}
+                    <option value="{{ i.id }}">{{ i.courseName }}</option>
+                {% endfor %}
+            </select>
+            <label for="TA">Teaching assistant: </label>
+            <select name="teaching_assistant" id="TA">
+                {% for i in user_info %}
+                    <option value="{{ i.id }}">{{ i.lastName }}, {{ i.firstName }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="create_section" value="Create section">
+        </form>
+    </div>
+</div>
+</body>
+<footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
-      Form made by Semicolons</div>
-  </footer>
+        Form made by Semicolons
+    </div>
+</footer>
 </html>

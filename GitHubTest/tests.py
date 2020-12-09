@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from .models import MySyllabus, MyUser, PersonalInfo
+from .models import MySyllabus, MyUser
 import unittest
 
 
