@@ -61,15 +61,20 @@ class PersonalInfoView(View):
     def post(self, request):
         user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
         name = user.firstName + " " + user.lastName
-        new_info = PersonalInfo(firstName=user.firstName,
-                                lastName=user.lastName,
-                                officeHours=request.POST["officeHours"],
-                                officeNumber=request.POST["officeNumber"],
-                                email=request.POST["email"],
-                                phoneNumber=request.POST["phoneNumber"],
-                                syllabus=user.syllabus,
-                                user=user)
-
-        new_info.save()
-        return render(request, "TA_UI_page1.html", {})
+        # new_info = PersonalInfo(firstName=user.firstName,
+        #                         lastName=user.lastName,
+        #                         officeHours=request.POST["officeHours"],
+        #                         officeNumber=request.POST["officeNumber"],
+        #                         email=request.POST["email"],
+        #                         phoneNumber=request.POST["phoneNumber"],
+        #                         syllabus=user.syllabus,
+        #                         user=user.user)
+        user.officeHours = request.POST["officeHours"]
+        user.email = request.POST["email"]
+        user.phoneNumber=request.POST["phoneNumber"]
+        user.officeNumber= request.POST["officeNumber"]
+        user.save()
+        current_user = PersonalInfo.objects.get(user=MyUser.objects.get(id=request.session["current"]))
+        # user_info = list(PersonalInfo.objects.filter(user=user))
+        return render(request, "TA_UI_page1.html", {"user_info": current_user})
 
