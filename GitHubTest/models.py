@@ -1,9 +1,13 @@
 from django.db import models
 
 
-class MyUser(models.Model):
+class MyUserLogin(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
+
+
+class MyUser(models.Model):
+    login = models.ForeignKey(MyUserLogin, on_delete=models.CASCADE)
     type = models.CharField(max_length=1)  # T=TA  I=Instructor  A=Admin
     lastName = models.CharField(max_length=20)
     firstName = models.CharField(max_length=20)
