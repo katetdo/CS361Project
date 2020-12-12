@@ -12,28 +12,26 @@
     <header>
         <h1 align="center">Course Staff Form</h1>
     </header>
+    <fieldset style="border-color:yellow; background-color:#fff0f5">
      <h2>Personal Information</h2>
-        <p>First Name     :{{ user_info.firstName }}</p>
-        <p>Last Name      :{{ user_info.lastName }}</p>
-        <p>Office Hours   :{{ user_info.officeHours }}</p>
-        <p>Office Number  :{{ user_info.officeNumber}}</p>
-        <p>Email          :{{ user_info.email }}</p>
-        <p>Phone Number   :{{ user_info.phoneNumber}}</p>
-        <p>Course         :{{ user_info.syllabus.courseName }}</p>
-        <p>Syllabus       :{{ user_info.syllabus.assignmentWeight }}</p>
+        <p>First Name     :{{ user_info.firstName }}   ||   Last Name      :{{ user_info.lastName }}</p>
+        <p>Office Hours   :{{ user_info.officeHours }}    ||    Office Number  :{{ user_info.officeNumber}}</p>
+        <p>Email          :{{ user_info.email }}    ||    Phone Number   :{{ user_info.phoneNumber}}</p>
+        <p>Course         :{{ user_info.syllabus.courseName }}  ||  Syllabus       :{{ user_info.syllabus.assignmentWeight }}</p>
+    </fieldset>
     <form method="post" action="/PersonalInfo/">
         {% csrf_token %}
     <hr>
       <section>
 {#        <form id="name" method="post" action="">#}
-            <fieldset>
+            <fieldset style="border-color:yellow; background-color:#fff0f5">
               <h2>Contact Information</h2>
               <label for="email" id="label1">Email:</label>
                     <input type="text" multiple name="email" id="email" required maxlength="30">
               <label for="phone" id="label3">Phone #:</label>
                     <input type="text" multiple name="phoneNumber" id="phoneNumber" required maxlength="30"><br><br>
             </fieldset><br>
-            <fieldset>
+            <fieldset style="border-color:yellow; background-color:#fff0f5">
               <div id="all">
                 <h2 id="officeh2">Office Hours</h2>
                   <label for="officeHours" id="label1">Office Hour :</label>
