@@ -89,4 +89,3 @@ class PersonalInfoView(View):
         user.officeNumber = request.POST["officeNumber"]
         user.save()
         return render(request, "TA_UI_page1.html", {"user_info": user})
-
