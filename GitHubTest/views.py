@@ -7,16 +7,26 @@ from GitHubTest.models import MySyllabus, MyUser, MyUserLogin, MyCourse, MySecti
 class Home(View):
     def get(self, request):
         request.session["current"] = ""
-        return render(request, "login.html", {"error_msg": ""})
+        syllabi = list(MySyllabus.objects.all())
+        return render(request, "login.html", {"syllabi": syllabi, "error_msg": ""})
 
     def post(self, request):
-        try:
-            login = MyUserLogin.objects.get(username=request.POST['username'], password=request.POST['password'])
-            my_user = MyUser.objects.get(login=login)
-            request.session["current"] = my_user.id
-            return redirect("/Administrator/" if my_user.type == 'A' else "/PersonalInfo/")
-        except ObjectDoesNotExist:
-            return render(request, "login.html", {"error_msg": "Incorrect username or password."})
+        if "login" in request.POST:
+            try:
+                login = MyUserLogin.objects.get(username=request.POST['username'], password=request.POST['password'])
+                my_user = MyUser.objects.get(login=login)
+                request.session["current"] = my_user.id
+                return redirect("/Administrator/" if my_user.type == 'A' else "/PersonalInfo/")
+            except ObjectDoesNotExist:
+                syllabi = list(MySyllabus.objects.all())
+                return render(request, "login.html", {"syllabi": syllabi,
+                                                      "error_msg": "Incorrect username or password."})
+        if "guest" in request.POST:
+            return redirect("/Syllabus/" + request.POST["course"])
+        syllabi = list(MySyllabus.objects.all())
+        return render(request, "login.html", {"syllabi": syllabi,
+                                              "error_msg": "Something went wrong. Please try again."})
+
 
 def build_course_info(course_objects):
     courses = []
@@ -98,7 +108,7 @@ class InstructorView(View):
         elif "add_component" in request.POST:
             new_component = MySyllabusComponent(syllabus=MySyllabus.objects.get(id=request.POST["syllabus"]),
                                                 name=request.POST["name"],
-                                                description=request.POST["contents"])
+                                                content=request.POST["contents"])
             new_component.save()
         user = MyUser.objects.get(id=request.session["current"])
         return render(request, "instructor.html", self.get_template_data(user))
@@ -112,8 +122,11 @@ class InstructorView(View):
 
 def render_syllabus(request, course):
     syllabus = MySyllabus.objects.get(courseName=course)
+    sections = list(MySection.objects.filter(course=MyCourse.objects.get(courseName=course)))
     components = list(MySyllabusComponent.objects.filter(syllabus=syllabus).values())
     return render(request, "syllabus.html", {"syllabus": syllabus,
                                              "instructor": syllabus.instructor,
+                                             "sections": sections,
                                              "components": components})
+
 

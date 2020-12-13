@@ -44,4 +44,4 @@ class MySyllabus(models.Model):
 class MySyllabusComponent(models.Model):
     syllabus = models.ForeignKey(MySyllabus, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
+    content = models.CharField(max_length=200)

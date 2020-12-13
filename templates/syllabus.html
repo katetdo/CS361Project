@@ -2,23 +2,27 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>Admin UI</title>
+    <title>{{ syllabus.courseName }} Course Syllabus</title>
     <meta charset="utf-8">
     <meta name="author" content="Dakito Dasho">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "styles/syllabus.css" %}" />
   </head>
   <body>
-    <h1>{{ syllabus.courseName }}</h1><br><br>
-    <h2>{{ instructor.firstName }} {{ instructor.lastName }}</h2><br>
-    <h3>Email: {{ instructor.email }}</h3><br>
-    <h3>Phone: {{ instructor.phoneNumber }}</h3><br>
-    <h3>Office hours: {{ instructor.officeHours }}, {{ instructor.officeNumber }}</h3><br><br>
-    <h2>Course description:</h2><br>
-    <p>{{ syllabus.courseDescription }}</p><br<br>
+    <h1>{{ syllabus.courseName }} Course Syllabus</h1><br><br>
+    <h2>{{ instructor.firstName }} {{ instructor.lastName }}</h2>
+    <h3>Email: {{ instructor.email }}</h3>
+    <h3>Phone: {{ instructor.phoneNumber }}</h3>
+    <h3>Office hours: {{ instructor.officeHours }}, {{ instructor.officeNumber }}</h3><br>
+    <h2>Course description:</h2>
+    <p>{{ syllabus.courseDescription }}</p><br>
+    <h2>Sections: </h2>
+    {% for i in sections %}
+        <p>{{ i.sectionNumber }}, {{ i.teachingAssistant.firstName }} {{ i.teachingAssistant.lastName }}</p>
+    {% endfor %}<br>
     {% for i in components %}
-        <h2>{{ i.name }}</h2><br>
-        <p>{{ i.description }}</p>
+        <h2>{{ i.name }}</h2>
+        <p>{{ i.content }}</p>
     {% endfor %}
   </body>
   <footer>
