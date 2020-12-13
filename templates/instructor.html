@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>UI Page 2</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Dakito Dasho">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "styles/page2.css" %}" />
+  </head>
+  <body>
+    <h1>Syllabi: </h1><br>
+        {% for i in syllabi %}
+            <a href="/Syllabus/{{ i.courseName }}">{{ i.courseName }}</a>
+        {% endfor %}
+    <h1 align="center">Course Creation Form</h1>
+    <form method="post" action="/Instructor/">
+        {% csrf_token %}
+        <select name="course">
+            {% for i in courses %}
+                <option value="{{ i.courseName }}">{{ i.courseName }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="description">Course description: </label>
+        <input type="text" maxlength="200" id="description" name="description"><br>
+        <input type="submit" name="create_syllabus" value="Create syllabus">
+    </form><br>
+    <h1 align="center">Add Syllabus Components</h1>
+    <form method="post" action="/Instructor/">
+        {% csrf_token %}
+        <select name="syllabus">
+            {% for i in syllabi %}
+                <option value="{{ i.id }}">{{ i.courseName }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="name">Component name: </label>
+        <input type="text" name="name" id="name"><br>
+        <label for="contents">Contents: </label>
+        <input type="text" name="contents" id="contents">
+        <input type="submit" name="add_component" value="Add component">
+    </form>
+  </body><br>
+  <footer>
+    <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
+      Form made by Semicolons</div>
+  </footer>
+
+</html>

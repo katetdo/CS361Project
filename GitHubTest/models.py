@@ -33,6 +33,15 @@ class MySection(models.Model):
 
 class MySyllabus(models.Model):
     course = models.ForeignKey(MyCourse, on_delete=models.CASCADE)
-    courseDescription = models.CharField(max_length=200, default="")
-    assignmentWeight = models.CharField(max_length=20)
-    gradeScale = models.CharField(max_length=20)
+    instructor = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    courseName = models.CharField(max_length=10)
+    courseDescription = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.courseName
+
+
+class MySyllabusComponent(models.Model):
+    syllabus = models.ForeignKey(MySyllabus, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)

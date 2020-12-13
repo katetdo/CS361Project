@@ -9,78 +9,17 @@
     <link rel="stylesheet" href="{% static "styles/syllabus.css" %}" />
   </head>
   <body>
-    <table width="100%" height="250%" align="center" border="1">
-      <tr>
-        <th colspan="7" style="background-color: Lavender; font-size:30px" height="40" >Syllabus</th>
-      </tr>
-      <tr align="center" style="background-color: Lavender; font-size:30px" height="40">
-        <td style="width:15px">Course Name</td>
-        <td style="width:1px">Instructor</td>
-        <td style="width:60px">TA</td>
-        <td style="width:25px">Syllabus</td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td id="cell1"></td>
-        <td id="cell2"></td>
-        <td id="cell3"></td>
-        <td id="cell4"></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr align="center" height="40" style="background-color: Ivory; font-size:30px">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      </table>
-      <button type="button" id="createButton">Create</button>
+    <h1>{{ syllabus.courseName }}</h1><br><br>
+    <h2>{{ instructor.firstName }} {{ instructor.lastName }}</h2><br>
+    <h3>Email: {{ instructor.email }}</h3><br>
+    <h3>Phone: {{ instructor.phoneNumber }}</h3><br>
+    <h3>Office hours: {{ instructor.officeHours }}, {{ instructor.officeNumber }}</h3><br><br>
+    <h2>Course description:</h2><br>
+    <p>{{ syllabus.courseDescription }}</p><br<br>
+    {% for i in components %}
+        <h2>{{ i.name }}</h2><br>
+        <p>{{ i.description }}</p>
+    {% endfor %}
   </body>
   <footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
