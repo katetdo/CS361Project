@@ -33,7 +33,7 @@ def build_course_info(course_objects):
         sections = []
         section_objects = MySection.objects.filter(course=course)
         for s in section_objects:
-            sections.append(str(s.sectionNumber) + ", " +
+            sections.append(str(s.sectionNumber) + " " + s.description + ", " +
                             s.teachingAssistant.firstName + " " + s.teachingAssistant.lastName)
         course = {
             "name": course.courseName,
@@ -63,6 +63,7 @@ class AdminView(View):
             new_course.save()
         elif "create_section" in request.POST:
             new_section = MySection(sectionNumber=request.POST["section_number"],
+                                    description=request.POST["description"],
                                     course=MyCourse.objects.get(id=request.POST["course"]),
                                     teachingAssistant=MyUser.objects.get(id=request.POST["teaching_assistant"]))
             new_section.save()

@@ -70,10 +70,13 @@ h1{
 
 #loginButton{
   width:70px;
-  margin-left:36px;
+  margin-left:287px;
+  margin-bottom:20px;
   background:white;
 }
 
-#syllabus_link{
-  margin-left:155px;
+#coursedropdown{
+  margin-left:190px;
 }
+
+

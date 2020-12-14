@@ -21,13 +21,14 @@ class MyUser(models.Model):
 
 
 class MyCourse(models.Model):
-    courseName = models.CharField(max_length=20)
+    courseName = models.CharField(max_length=50)
     instructor = models.ForeignKey(MyUser, on_delete=models.CASCADE)
 
 
 class MySection(models.Model):
     sectionNumber = models.IntegerField()
     course = models.ForeignKey(MyCourse, on_delete=models.CASCADE)
+    description = models.CharField(max_length=20)
     teachingAssistant = models.ForeignKey(MyUser, on_delete=models.CASCADE)
 
 
