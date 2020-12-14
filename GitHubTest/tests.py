@@ -88,8 +88,51 @@ class TestPersonalInfo(unittest.TestCase):
         self.user.officeHours = "12:00 - 1:00"
         self.user.officeNumber = "205"
         self.user.email = "katetdo@uwm.edu"
-        self.user.phoneNumber = "262-716-5272"
+        self.user.phoneNumber = "2627165272"
 
+    def test_officeNumber1(self):
+        self.user.officeNumber = "205"
+        self.assertTrue(self.user.officeNumber.isnumeric())
+
+    def test_officeNumber2(self):
+        self.user.officeNumber = "205"
+        self.assertEqual(int(self.user.officeNumber), 205)
+
+    def test_officeNumber3(self):
+        self.user.officeNumber = "0"
+        self.assertFalse(int(self.user.officeNumber), "officeNumber can't be 0")
+
+    def test_phoneNumber(self):
+        self.user.phoneNumber = "4145445978"
+        self.assertTrue(self.user.phoneNumber.isnumeric())
+
+    def test_phoneNumber2(self):
+        self.user.phoneNumber = "4145445978"
+        self.assertEqual(int(self.user.phoneNumber), 4145445978)
+
+    def test_phoneNumber3(self):
+        self.user.phoneNumber = "0"
+        self.assertFalse(int(self.user.phoneNumber), "Phone numbers can't be 0")
+
+    def test_email(self):
+        self.user.email = "dakito@uwm.edu"
+        self.assertTrue(self.user.email.find("@uwm.edu") > 0)
+
+    def test_email2(self):
+        self.user.email = "dakito@uwm.edu23"
+        x = self.user.email.split(7, 16)
+        self.assertNotEqual(x, "@uwm.edu", "There can not be characters after @uwm.edu")
+
+    def test_email3(self):
+        self.user.email = "@uwm.edu"
+        self.assertFalse(self.user.email.index("@") == 0, "There has to be characters before the @ symbol")
+
+    def test_email4(self):
+        self.user.email = "34@45@uwm.edu"
+        x = self.user.email.find("@")
+        y = self.user.email.split(x, 13)
+        z = y.find("@")
+        self.assertEqual(z, -1, "There cannot be multiple @ in an email")
 
 def suit():
     suite = unittest.TestSuite()
