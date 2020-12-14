@@ -9,21 +9,24 @@
     <link rel="stylesheet" href="{% static "styles/syllabus.css" %}" />
   </head>
   <body>
-    <h1>{{ syllabus.courseName }} Course Syllabus</h1><br><br>
-    <h2>{{ instructor.firstName }} {{ instructor.lastName }}</h2>
-    <h3>Email: {{ instructor.email }}</h3>
-    <h3>Phone: {{ instructor.phoneNumber }}</h3>
-    <h3>Office hours: {{ instructor.officeHours }}, {{ instructor.officeNumber }}</h3><br>
-    <h2>Course description:</h2>
-    <p>{{ syllabus.courseDescription }}</p><br>
-    <h2>Sections: </h2>
-    {% for i in sections %}
-        <p>{{ i.sectionNumber }}, {{ i.teachingAssistant.firstName }} {{ i.teachingAssistant.lastName }}</p>
-    {% endfor %}<br>
-    {% for i in components %}
-        <h2>{{ i.name }}</h2>
-        <p>{{ i.content }}</p>
-    {% endfor %}
+    <div id="syllabus">
+        <h1>{{ syllabus.courseName }} Course Syllabus</h1><br><br>
+        <h2>Instructor: </h2>
+        <p><b>{{ instructor.firstName }} {{ instructor.lastName }}</b></p>
+        <p><b>Email: </b> {{ instructor.email }}</p>
+        <p><b>Phone: </b> {{ instructor.phoneNumber }}</p>
+        <p><b>Office hours: </b> {{ instructor.officeHours }}, {{ instructor.officeNumber }}</p><br>
+        <h2>Sections: </h2>
+        {% for i in sections %}
+            <p>{{ i.sectionNumber }}, {{ i.teachingAssistant.firstName }} {{ i.teachingAssistant.lastName }} ({{ i.teachingAssistant.email }})</p>
+        {% endfor %}<br>
+        <h2>Course description:</h2>
+        <p>{{ syllabus.courseDescription }}</p><br>
+        {% for i in components %}
+            <h2>{{ i.name }}</h2>
+            <p>{{ i.content }}</p>
+        {% endfor %}
+    </div>
   </body>
   <footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">

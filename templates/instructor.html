@@ -6,67 +6,78 @@
     <meta charset="utf-8">
     <meta name="author" content="Dakito Dasho">
       <meta name="viewport"  content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static "styles/page2.css" %}">
+        <link rel="stylesheet" href="{% static "styles/instructor.css" %}">
+      <link rel="stylesheet" href="{% static "styles/global.css" %}"/>
   </head>
   <body>
-    <h1>Syllabi: </h1>
+    <h1 id="title">Syllabus Editor</h1>
+    <fieldset id="syllabus-viewer">
+        <h3>View syllabus: </h3>
         {% for i in syllabi %}
-            <a href="/Syllabus/{{ i.courseName }}">{{ i.courseName }}</a>,
+            <a href="/Syllabus/{{ i.courseName }}">  {{ i.courseName }}  </a>
         {% endfor %}
-    <h1>Add/delete syllabi</h1>
-    <form method="post" action="/Instructor/">
-        {% csrf_token %}
-        <label for="course">Available courses: </label>
-        <select name="course" id="course">
-            {% for i in available_courses %}
-                <option value="{{ i.courseName }}">{{ i.courseName }}</option>
-            {% endfor %}
-        </select><br>
-        <label for="description">Course description: </label>
-        <input type="text" maxlength="200" id="description" name="description"><br>
-        <input type="submit" name="create_syllabus" value="Create syllabus">
-    </form><br>
-    <form method="post" action="/Instructor/">
-        {% csrf_token %}
-        <select name="syllabus">
-            {% for i in syllabi %}
-                <option value="{{ i.id }}">{{ i.courseName }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" name="delete_syllabus" value="Delete syllabus">
-    </form>
-    <h1>Edit syllabus components</h1>
-    <form method="post" action="/Instructor/">
-        {% csrf_token %}
-        <select name="syllabus" id="component_syllabus">
-            {% for i in syllabi %}
-                <option value="{{ i.id }}">{{ i.courseName }}</option>
-            {% endfor %}
-        </select><br>
-        <label for="name">Component name: </label>
-        <input type="text" name="name" id="name"><br>
-        <label for="contents">Contents: </label>
-        <input type="text" name="contents" id="contents">
-        <input type="submit" name="add_component" value="Add component">
-    </form><br>
-    <form method="post" action="/Instructor/">
-        {% csrf_token %}
-        <select type="submit" name="update_components" onchange="this.parentElement.submit()">
-            <option value="">{{ selected_syllabus }}</option>
-            {% for i in syllabi %}
-                <option value="{{ i.id }}">{{ i.courseName }}</option>
-            {% endfor %}
-        </select>
-    </form>
-    <form method="post" action="/Instructor/">
-        {% csrf_token %}
-        <select name="component">
-            {% for i in components %}
-                <option value="{{ i.id }}">{{ i.name }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" name="delete_component" value="Delete component">
-    </form>
+    </fieldset>
+    </div>
+    <fieldset>
+        <h1>Add/delete syllabi</h1>
+        <form method="post" action="/Instructor/">
+            {% csrf_token %}
+            <label for="course">Available courses: </label>
+            <select name="course" id="course">
+                {% for i in available_courses %}
+                    <option value="{{ i.courseName }}">{{ i.courseName }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="description">Course description: </label><br>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
+            <input type="submit" name="create_syllabus" value="Create syllabus">
+        </form><br>
+        <form method="post" action="/Instructor/">
+            {% csrf_token %}
+            <label for="delete_syllabus_selector">Syllabus: </label>
+            <select name="syllabus" id="delete_syllabus_selector">
+                {% for i in syllabi %}
+                    <option value="{{ i.id }}">{{ i.courseName }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="delete_syllabus" value="Delete syllabus">
+        </form>
+    </fieldset>
+    <fieldset>
+        <h1>Edit syllabus components</h1>
+        <form method="post" action="/Instructor/">
+            {% csrf_token %}
+            <label for="component_syllabus">Syllabus: </label>
+            <select name="syllabus" id="component_syllabus">
+                {% for i in syllabi %}
+                    <option value="{{ i.id }}">{{ i.courseName }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="name">Component name: </label>
+            <input type="text" name="name" id="name"><br>
+            <label for="contents">Contents: </label><br>
+            <textarea name="contents" id="contents" rows="4" cols="50"></textarea><br>
+            <input type="submit" name="add_component" value="Add component">
+        </form><br>
+        <form method="post" action="/Instructor/">
+            {% csrf_token %}
+            <select type="submit" name="update_components" onchange="this.parentElement.submit()">
+                <option value="">{{ selected_syllabus }}</option>
+                {% for i in syllabi %}
+                    <option value="{{ i.id }}">{{ i.courseName }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <form method="post" action="/Instructor/">
+            {% csrf_token %}
+            <select name="component">
+                {% for i in components %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="delete_component" value="Delete component">
+        </form>
+    </fieldset>
   </body><br>
   <footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
