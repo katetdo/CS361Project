@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Personal Information</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Dakito Dasho">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "styles/page1.css" %}" />
+  </head>
+  <body>
+    <header>
+        <h1 align="center">Course Staff Form</h1>
+    </header>
+     <h2>Personal Information</h2>
+        <p>First Name     :{{ user_info.firstName }}</p>
+        <p>Last Name      :{{ user_info.lastName }}</p>
+        <p>Office Hours   :{{ user_info.officeHours }}</p>
+        <p>Office Number  :{{ user_info.officeNumber}}</p>
+        <p>Email          :{{ user_info.email }}</p>
+        <p>Phone Number   :{{ user_info.phoneNumber}}</p>
+        <p>Course         :{{ user_info.syllabus.courseName }}</p>
+        <p>Syllabus       :{{ user_info.syllabus.assignmentWeight }}</p>
+    <form method="post" action="/PersonalInfo/">
+        {% csrf_token %}
+    <hr>
+      <section>
+            <fieldset>
+              <h2>Contact Information</h2>
+              <label for="email" id="label1">Email:</label>
+                    <input type="text" multiple name="email" id="email" required maxlength="30">
+              <label for="phone" id="label3">Phone #:</label>
+                    <input type="text" multiple name="phoneNumber" id="phoneNumber" required maxlength="30"><br><br>
+            </fieldset><br>
+            <fieldset>
+              <div id="all">
+                <h2 id="officeh2">Office Hours</h2>
+                  <label for="officeHours" id="label1">Office Hour :</label>
+                    <input type="text" multiple name="officeHours" id="officeHour" required maxlength="30">
+                  <label for="officeNumber" id="label3">Phone #:</label>
+                    <input type="text" multiple name="officeNumber" id="officeNumber" required maxlength="30"><br><br>
+              </div>
+            </fieldset><br>
+          <input type="submit" id="submit" value="user details">
+      </section>
+    </form>
+    {% if user_info.type == 'I' %}
+        <a href="/Instructor/">View syllabi</a>
+    {% endif %}
+    <br><br>
+  </body>
+
+  <footer>
+    <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
+      Form made by Semicolons</div>
+  </footer>
+
+</html>

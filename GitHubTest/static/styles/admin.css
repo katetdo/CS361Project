@@ -11,4 +11,21 @@ body{
   font-weight: bold;
 }
 
+#syllabusLabel{
+  margin-left:15px;
+}
+#lastNameLabel{
+  margin-left:15px;
+}
+#passwordLabel{
+  margin-left:17px;
+}
+
+#instructorDropDown{
+  margin-left:15px;
+}
+#taDropDown{
+  margin-left:15px;
+}
+
 

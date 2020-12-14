@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from GitHubTest.views import Home,PersonalInfoView, AdminView
+from GitHubTest.views import Home, PersonalInfoView, AdminView, InstructorView
+import GitHubTest.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home.as_view()),
     path('PersonalInfo/', PersonalInfoView.as_view()),
-    path('administrator/', AdminView.as_view())
-    ]
+    path('Administrator/', AdminView.as_view()),
+    path('Instructor/', InstructorView.as_view()),
+    path('Syllabus/<course>', views.render_syllabus)
+]
 
