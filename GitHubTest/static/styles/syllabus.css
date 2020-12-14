@@ -7,6 +7,7 @@ body{
   width: 65%;
   background-color: snow;
   box-shadow: 0 0 20px 5px;
+  padding-bottom: 10px;
 }
 
 #syllabus > * {
