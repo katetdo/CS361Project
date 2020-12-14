@@ -23,15 +23,16 @@
             <input type="password" name="password" id="password"  required autofocus><br><br>
             <input type="submit" name="login" id="loginButton" value="Login"><br>
         </form>
-    </div>
+
     <form method="post" action="/">
         {% csrf_token %}
-        <select name="course">
+        <select name="course" id="coursedropdown">
             {% for i in syllabi %}
                 <option value="{{ i.courseName }}">{{ i.courseName }}</option>
             {% endfor %}
         </select>
         <input type="submit" name="guest" value="View syllabus">
     </form>
+    </div>
   </body>
 </html>
