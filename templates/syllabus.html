@@ -18,7 +18,7 @@
         <p><b>Office hours: </b> {{ instructor.officeHours }}, {{ instructor.officeNumber }}</p><br>
         <h2>Sections: </h2>
         {% for i in sections %}
-            <p>{{ i.sectionNumber }} {{ i.description }}, {{ i.teachingAssistant.firstName }} {{ i.teachingAssistant.lastName }} ({{ i.teachingAssistant.email }})</p>
+            <p>{{ i.sectionNumber }}, {{ i.teachingAssistant.firstName }} {{ i.teachingAssistant.lastName }} ({{ i.teachingAssistant.email }})</p>
         {% endfor %}<br>
         <h2>Course description:</h2>
         <p>{{ syllabus.courseDescription }}</p><br>
