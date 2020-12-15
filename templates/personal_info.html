@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <title>Personal Information</title>
     <meta charset="utf-8">
     <meta name="author" content="Dakito Dasho">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "styles/personal_info.css" %}" />
-      <link rel="stylesheet" href="{% static "styles/global.css" %}"/>
+      <link rel="stylesheet" href="{% static "styles/global.css" %}" />
   </head>
   <body>
     <header>
-        <h1 align="center">Course Staff Form</h1>
-        <div id="headerButton">
-            <form method="get" action="http://127.0.0.1:8000">
-                <button><a href="http://127.0.0.1:8000/">Home</a></button>
-            </form>
-        </div><br>
+      <h1 align="center">Personal Information Editor</h1>
     </header>
-     <h2>Personal Information</h2>
-        <p>First Name     :{{ user_info.firstName }}</p>
-        <p>Last Name      :{{ user_info.lastName }}</p>
-        <p>Office Hours   :{{ user_info.officeHours }}</p>
-        <p>Office Number  :{{ user_info.officeNumber}}</p>
-        <p>Email          :{{ user_info.email }}</p>
-        <p>Phone Number   :{{ user_info.phoneNumber}}</p>
-        <p>Course         :{{ user_info.syllabus.courseName }}</p>
-        <p>Syllabus       :{{ user_info.syllabus.assignmentWeight }}</p>
-    <form method="post" action="/PersonalInfo/">
-        {% csrf_token %}
-    <hr>
-      <section>
-            <fieldset>
-              <h2>Contact Information</h2>
-              <label for="email" id="label1">Email:</label>
-                    <input type="text" multiple name="email" id="email" required maxlength="30">
-              <label for="phone" id="label3">Phone #:</label>
-                    <input type="text" multiple name="phoneNumber" id="phoneNumber" required maxlength="30"><br><br>
-            </fieldset><br>
-            <fieldset>
-              <div id="all">
-                <h2 id="officeh2">Office Hours</h2>
-                  <label for="officeHours" id="label1">Office Hour :</label>
-                    <input type="text" multiple name="officeHours" id="officeHour" required maxlength="30">
-                  <label for="officeNumber" id="label3">Phone #:</label>
-                    <input type="text" multiple name="officeNumber" id="officeNumber" required maxlength="30"><br><br>
-              </div>
-            </fieldset><br>
-          <input type="submit" id="submit" value="user details">
-      </section>
-    </form>
-    {% if user_info.type == 'I' %}
-        <a href="/Instructor/">Syllabus Editor</a>
-    {% endif %}
-    <br><br>
+    <fieldset id="content-wrapper">
+        <h2>Personal Information</h2>
+        <p><b>First name:</b>  {{ user_info.firstName }}</p>
+        <p><b>Last name:</b>   {{ user_info.lastName }}</p>
+        <p><b>Position:</b>
+            {% if user_info.type == 'I' %}
+                Course Instructor
+            {% elif user_info.type == 'T' %}
+                Teaching Assistant
+            {% endif %}
+        </p>
+        <form method="post" action="/PersonalInfo/" style="padding-bottom: 10px">
+            {% csrf_token %}
+            <h2>Contact Information</h2>
+            <label for="email" id="label1">Email: </label>
+            <input type="text" multiple name="email" id="email"
+                   value="{{ user_info.email }}" onchange="this.parentElement.submit()">
+            <label for="phone" id="label3">Phone number: </label>
+            <input type="text" multiple name="phoneNumber" id="phoneNumber"
+                   value="{{ user_info.phoneNumber }}" onchange="this.parentElement.submit()"><br><br>
+            <br>
+            <h2>Office Hours</h2>
+            <label for="officeHours" id="label1">Office hours: </label>
+            <input type="text" multiple name="officeHours" id="officeHour"
+                   value="{{ user_info.officeHours }}" onchange="this.parentElement.submit()">
+            <label for="officeNumber" id="label3">Office number: </label>
+            <input type="text" multiple name="officeNumber" id="officeNumber"
+                   value="{{ user_info.officeNumber }}" onchange="this.parentElement.submit()" on><br><br>
+        </form>
+        {% if user_info.type == 'I' %}
+            <a id="syllabus-page-link" href="/Instructor/">View Syllabus Editor</a>
+        {% endif %}
+    </fieldset>
   </body>
-
   <footer>
     <div style="position:fixed;bottom:0;height:auto;margin-top:40px;width:100%;text-align:center">
       Form made by Semicolons</div>

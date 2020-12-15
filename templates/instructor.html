@@ -6,18 +6,11 @@
     <meta charset="utf-8">
     <meta name="author" content="Dakito Dasho">
       <meta name="viewport"  content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="{% static "styles/instructor.css" %}">
-        <link rel="stylesheet" href="{% static "styles/global.css" %}"/>
+        <link rel="stylesheet" href="{% static "styles/instructor.css" %}">
+      <link rel="stylesheet" href="{% static "styles/global.css" %}"/>
   </head>
   <body>
-    <header>
-        <h1 id="title">Syllabus Editor</h1>
-        <div id="headerButton">
-            <form method="get" action="http://127.0.0.1:8000">
-                <button><a href="http://127.0.0.1:8000/">Home</a></button>
-            </form>
-        </div><br>
-    </header>
+    <h1 id="title">Syllabus Editor</h1>
     <fieldset id="syllabus-viewer">
         <h3>View syllabus: </h3>
         {% for i in syllabi %}
