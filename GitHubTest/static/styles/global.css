@@ -7,6 +7,23 @@ body{
     background: mediumpurple;
 }
 
+#headerButton{
+  list-style: none;
+  position: relative;
+  margin-left:650px;
+}
+#headerButton a{
+  text-decoration: none;
+  background: lightgrey;
+  width: 200px;
+  height: 25px;
+  display: inline-block;
+  text-align: center;
+  line-height: 25px;
+  background: #fff0f5;
+}
+
+
 fieldset {
     margin-top: 10px;
     border-color: yellow;
