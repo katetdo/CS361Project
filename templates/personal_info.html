@@ -12,6 +12,9 @@
   <body>
     <header>
       <h1 align="center">Personal Information Editor</h1>
+      <div id="headerButton">
+            <button><a href="/">Home</a></button>
+      </div><br>
     </header>
     <fieldset id="content-wrapper">
         <h2>Personal Information</h2>
@@ -29,18 +32,18 @@
             <h2>Contact Information</h2>
             <label for="email" id="label1">Email: </label>
             <input type="text" multiple name="email" id="email"
-                   value="{{ user_info.email }}" onchange="this.parentElement.submit()">
+                   value="{{ user_info.email }}" onkeypress="updateInfo(event)" ">
             <label for="phone" id="label3">Phone number: </label>
             <input type="text" multiple name="phoneNumber" id="phoneNumber"
-                   value="{{ user_info.phoneNumber }}" onchange="this.parentElement.submit()"><br><br>
+                   value="{{ user_info.phoneNumber }}" onkeypress="updateInfo(event)" "><br><br>
             <br>
             <h2>Office Hours</h2>
             <label for="officeHours" id="label1">Office hours: </label>
             <input type="text" multiple name="officeHours" id="officeHour"
-                   value="{{ user_info.officeHours }}" onchange="this.parentElement.submit()">
+                   value="{{ user_info.officeHours }}" onkeypress="updateInfo(event)">
             <label for="officeNumber" id="label3">Office number: </label>
             <input type="text" multiple name="officeNumber" id="officeNumber"
-                   value="{{ user_info.officeNumber }}" onchange="this.parentElement.submit()" on><br><br>
+                   value="{{ user_info.officeNumber }}" onkeypress="updateInfo(event)"><br><br>
         </form>
         {% if user_info.type == 'I' %}
             <a id="syllabus-page-link" href="/Instructor/">View Syllabus Editor</a>
