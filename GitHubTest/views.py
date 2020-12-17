@@ -46,7 +46,6 @@ def build_course_info(course_objects):
 
 class AdminView(View):
     def get(self, request):
-        current_user = MyUser.objects.get(id=request.session["current"])
         return render(request, "admin.html", get_admin_template_data())
 
     def post(self, request):

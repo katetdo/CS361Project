@@ -5,61 +5,24 @@ import unittest
 
 
 # Create your tests here.
-class TestStuffStr(unittest.TestCase):
+class TestLogin(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user1 = MyUser(login=MyUserLogin(username="noman", password="1234"))
-        self.user2 = MyUser(login=MyUserLogin(username="Nick", password="5678"))
-        self.user3 = MyUser(login=MyUserLogin(username="Santha", password="1234"))
-
-        self.user1.save()
-        self.user2.save()
-        self.user3.save()
-
-    def test_Session(self):
-        client = Client()
-        response = client.get('/TA/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_something(self):
-        session = self.client.session
-        session['name'] = 'noman'
-        session.save()
-        response = self.client.get('/TA/')
-        self.assertEqual(list(response.context["TA"]), list(map(str, list(MyUser.objects.filter(user=self.testuser1)))))
+        self.user_admin = MyUser(login=MyUserLogin(username="noman", password="1234"),
+                                 type="A")
+        self.user_instructor = MyUser(login=MyUserLogin(username="Nick", password="5678"),
+                                      type="I")
+        self.user_ta = MyUser(login=MyUserLogin(username="Santha", password="1234"),
+                              type="T")
 
     def test_login(self):
         client = Client()
-
         # verify that a user can log in
-        response = client.post('/', {"username": "noman", "password": "1234"})
-        self.assertTrue(self.client.login())
-        self.assertEqual(response.status_code, 200)
-
-        response = client.post('/', {"username": "Nick", "password": "5678"})
-        self.assertTrue(self.client.login())
-        self.assertEqual(response.status_code, 200)
-
-        response = client.post('/', {"username": "Santha", "password": "1234"})
-        self.assertTrue(self.client.login())
-        self.assertEqual(response.status_code, 200)
-
-        # password needs to be a string
-        response = client.post('/', {"username": "noman", "password": 1234})
-        self.assertFalse(self.client.login())
-        self.assertEqual(response.status_code, 200)
-
-        # password needs to match user
-        response = client.post('/', {"username": "noman", "password": "5678"})
-        self.assertFalse((self.client.login()))
-        self.assertEqual(response.status_code, 200)
-
-        response = client.post('/', {"username": "Nick", "password": "1234"})
-        self.assertFalse((self.client.login()))
+        response = client.post("/", {"name": "login", "username": "noman", "password": "1234"}, follow=True)
         self.assertEqual(response.status_code, 200)
 
 
-class TestPersonalInfo(unittest.TestCase):
+class TestPersonalInfo(TestCase):
 
     def test_officeNumber1(self):
         self.user.officeNumber = "205"
@@ -106,7 +69,7 @@ class TestPersonalInfo(unittest.TestCase):
         self.assertEqual(z, -1, "There cannot be multiple @ in an email")
 
 
-class TestSyllabus(unittest.TestCase):
+class TestSyllabus(TestCase):
     def test_syllabus_course(self):
         syllabus1 = MySyllabus(course="CS361", instructor="John")
 
@@ -114,7 +77,7 @@ class TestSyllabus(unittest.TestCase):
         self.assertEquals(syllabus1.course, (MySyllabus(instructor="John")), "Instructors can teach multiple classes")
 
 
-class TestSections(unittest.TestCase):
+class TestSections(TestCase):
     def test_sections(self):
         syllabus1 = MySection(sectionNumber=802, course="CS361")
 
@@ -122,5 +85,5 @@ class TestSections(unittest.TestCase):
         self.assertEquals(syllabus1.course, (MySection(course="CS361")), "Can have multiple sections")
 
 
-suite = unittest.TestSuite()
-suite.addTests(TestStuffStr(), TestPersonalInfo(), TestSyllabus(), TestSections())
+#suite = unittest.TestSuite()
+#suite.addTests(TestStuffStr(), TestPersonalInfo(), TestSyllabus(), TestSections())

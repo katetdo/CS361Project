@@ -8,6 +8,7 @@
     <meta name="viewport"  content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "styles/personal_info.css" %}" />
       <link rel="stylesheet" href="{% static "styles/global.css" %}" />
+      <script type="application/javascript" src="{% static "scripts/personal_info_editor.js" %}"></script>
   </head>
   <body>
     <header>
@@ -32,10 +33,10 @@
             <h2>Contact Information</h2>
             <label for="email" id="label1">Email: </label>
             <input type="text" multiple name="email" id="email"
-                   value="{{ user_info.email }}" onkeypress="updateInfo(event)" ">
+                   value="{{ user_info.email }}" onkeypress="updateInfo(event)">
             <label for="phone" id="label3">Phone number: </label>
             <input type="text" multiple name="phoneNumber" id="phoneNumber"
-                   value="{{ user_info.phoneNumber }}" onkeypress="updateInfo(event)" "><br><br>
+                   value="{{ user_info.phoneNumber }}" onkeypress="updateInfo(event)"><br><br>
             <br>
             <h2>Office Hours</h2>
             <label for="officeHours" id="label1">Office hours: </label>
